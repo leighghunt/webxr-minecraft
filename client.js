@@ -12,7 +12,7 @@ setInterval(function(){
   
 
   var positionCylinder = cylinder.getAttribute('position')
-  positionCylinder.x-=0.005
+  positionCylinder.x-=0.001
   cylinder.setAttribute('position', positionCylinder);
 
 
