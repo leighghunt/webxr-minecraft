@@ -2,7 +2,12 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+<!--     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.js"></script>
+<!--     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> -->
+
+
     <script src="/client.js" defer></script>
   </head>
   <body>
@@ -18,18 +23,22 @@
     <a-scene physics="debug: true">
 
       <!-- Camera -->
-      <a-entity camera look-controls></a-entity>
+<!--       <a-entity camedra look-controls></a-entity> -->
 
       <!-- Floor -->
       <a-plane static-body></a-plane>
 
       <!-- Immovable box -->
-      <a-box static-body position="0 0.5 -5" width="3" height="1" depth="1"></a-box>
+      <a-box static-body position="0 0.5 -5" width="3" height="1" depth="1" color="#4CC3D9"></a-box>
+
       <a-box position="-1 4 -3" rotation="0 45 0" color="#4CC3D9" dynamic-body></a-box>
+      <a-sphere dynamic-body mass="10" id="sphere" position="0wd 3.25 -5" radius="1" color="#EF2D5E"></a-sphere>
+      <a-cylinder id="cylinder" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+
 
 
       <!-- Dynamic box -->
-      <a-box dynamic-body position="5 0.5 0" width="1" height="1" depth="1"></a-box>
+      <a-box dynamic-body position="5 0.5 0" width="1" height="1" depth="1" color="#4CC3D9"></a-box>
 
     </a-scene>
 <!--     
