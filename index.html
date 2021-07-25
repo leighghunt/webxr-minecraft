@@ -20,14 +20,17 @@
       <a-assets>
         <img id="sky" src="https://venari.co.nz/img/panoramas/TitahiBay_medium.jpg">
 
+        // Copied from https://glitch.com/edit/#!/aframe-aincraft
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+<!--         <img id="sky" src="https://venari.co.nz/img/panoramas/TitahiBay_medium.jpg"> -->
 <!--         <img id="sky" crossorigin="anonymous" src="https://raw.githubusercontent.com/venari/venari/master/img/panoramas/TitahiBay_medium.jpg"> -->
 
       </a-assets>
 
       <a-entity camedra look-controls></a-entity>
 
-      <a-sky color="#4CC3D9" source="#sky"></a-sky>
-      
+      <a-sky src="#sky"></a-sky>
+      <a-cylinder id="ground" src="#groundTexture" radius="2" height="0.1"></a-cylinder>
       
       <a-plane  static-body position="0 0 -3" rotation="45 45 0" color="#4CC3D9"></a-plane>
 
