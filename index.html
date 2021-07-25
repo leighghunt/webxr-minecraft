@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta http-equiv="Content-Security-Policy" content="*">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
@@ -26,12 +28,12 @@
      -->
     <a-scene physics=" debug: true; gravity: -00.98; ">
       <a-assets>
-        <img id="sky" src="ad.png">
-        <video id="kentucky-derby" src="derby.mp4"></video>
+        <img id="sky" crossorigin="anonymous" src="https://github.com/venari/venari/raw/master/img/panoramas/TitahiBay_medium.jpg">
       </a-assets>
+
       <a-entity camedra look-controls></a-entity>
 
-      <a-sky source="https://venari.co.nz/img/panoramas/TitahiBay_medium.jpg"></a-sky>
+      <a-sky source="#sky"></a-sky>
       
       <a-plane static-body position="0 0 -3" rotation="45 45 0" color="#4CC3D9"></a-plane>
 

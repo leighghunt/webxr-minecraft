@@ -1,8 +1,8 @@
-var sphere = document.getElementById('sphere');
+// var sphere = document.getElementById('sphere');
 
-var cylinder = document.getElementById('cylinder');
+// var cylinder = document.getElementById('cylinder');
 
-cylinder.body.angularVelocity.set(1, 1, 1)
+// cylinder.body.angularVelocity.set(1, 1, 1)
 
 // console.log("el....")
 // console.log(el)
