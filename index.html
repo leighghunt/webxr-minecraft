@@ -25,9 +25,14 @@
     </a-scene>
      -->
     <a-scene physics=" debug: true; gravity: -00.98; ">
-
+      <a-assets>
+        <img id="sky" src="ad.png">
+        <video id="kentucky-derby" src="derby.mp4"></video>
+      </a-assets>
       <a-entity camedra look-controls></a-entity>
 
+      <a-sky source="https://venari.co.nz/img/panoramas/TitahiBay_medium.jpg"></a-sky>
+      
       <a-plane static-body position="0 0 -3" rotation="45 45 0" color="#4CC3D9"></a-plane>
 
       <a-box id="floor" static-body position="0 0.5 -5" width="3" height="1" depth="1" color="#4CC3D9"></a-box>
