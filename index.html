@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+<!--     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script> -->
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="/client.js" defer></script>
   </head>
@@ -30,9 +30,9 @@
       <a-sky src="#sky"></a-sky>
       <a-cylinder id="floor" static-body src="#groundTexture" radius="10" height="0.1"></a-cylinder>
       
-      <a-box position="-1 4 -3" rotation="0 45 0" color="#4CC3D9" constraint="target: #target;" dynamic-body body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4"></a-box>
+      <a-box position="-1 4 -3" rotation="0 0 15" color="#4CC3D9" constraint="target: #target;" dynamic-body body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4"></a-box>
 <!--       <a-sphere id="sphere" position="0 5.25 -5" radius="1" color="#EF2D5E" constraint="target: #target;" dynamic-body></a-sphere> -->
-<!--       <a-cone position="0 3.75 -4" radius-bottom="1.25" color="green" shadow bounce body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4" constraint="target: #target;"></a-cone> -->
+      <a-cone position="0 3.75 -4" radius-bottom="1.25" color="green" shadow bounce body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4" constraint="target: #target;"></a-cone>
 <!--       <a-cylinder id="cylinder" rotation="45 45 0" velocity="0 01 1 " position="0 0.75 -5" radius="0.5" height="1.5"  color="#FFC65D" constraint="target: #target;" ></a-cylinder> -->
 
 
