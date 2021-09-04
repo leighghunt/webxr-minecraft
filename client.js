@@ -35,30 +35,46 @@ for(var xIndex = -10; xIndex <= 10; ++xIndex){
   )
 }
 
+var sceneEl = document.querySelector('a-scene');
+
+console.log(world.blocks.length)
+
 for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
+
+  var entityEl = document.createElement('a-box');
+  entityEl.setAttribute('geometry', {
+    primitive: 'box',
+    height: 1,
+    width: 1
+  });
+
+//  console.log(world.blocks[blockIndex].x)
+
+  console.log(world.blocks[blockIndex])
+
   
+  entityEl.setAttribute('position', {
+    x: world.blocks[blockIndex].x, 
+    y: world.blocks[blockIndex].y, 
+    z: world.blocks[blockIndex].z
+  })
+
+
+  entityEl.setAttribute('material', 'color', 'red');
+
+
+  entityEl.setAttribute('dynamic-body', {
+    shape: 'box',
+    mass: 1.5,
+    linearDamping: 0.005
+  });
+
+  // Do `.setAttribute()`s to initialize the entity.
+  sceneEl.appendChild(entityEl);
+
 }
 
-var sceneEl = document.querySelector('a-scene');
-var entityEl = document.createElement('a-box');
-entityEl.setAttribute('geometry', {
-  primitive: 'box',
-  height: 1,
-  width: 1
-});
-entityEl.setAttribute('position', {x: 1, y: 2, z: -5})
-
-entityEl.setAttribute('material', 'color', 'red');
-
-
-entityEl.setAttribute('dynamic-body', {
-  shape: 'box',
-  mass: 1.5,
-  linearDamping: 0.005
-});
 
       // <a-box position="-1 4 -3" rotation="0 0 15" color="#4CC3D9" constraint="target: #target;" dynamic-body body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4"></a-box>
 
 
-// Do `.setAttribute()`s to initialize the entity.
-sceneEl.appendChild(entityEl);
