@@ -29,22 +29,22 @@ var world = {
 
 for(var xIndex = -10; xIndex <= 10; ++xIndex){
 
-  for(var yIndex = -10; yIndex <= 10; ++yIndex){
+  for(var yIndex = 0; yIndex <= 0; ++yIndex){
 
-    for(var zIndex = -10; zIndex <= 10; ++yIndex){
+    for(var zIndex = -10; zIndex <= 10; ++zIndex){
 
 
       world.blocks.push(
         {
           position: {
             x: xIndex,
-            y:yIndex,
-            z:-5
+            y: yIndex,
+            z: zIndex
           },
           material: materialGrass
         }
       )
-      }
+    }
   }
 }
 
