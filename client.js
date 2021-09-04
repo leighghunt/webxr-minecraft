@@ -20,3 +20,15 @@
 
 // }, 50)
 //0 1.25 -5
+
+
+
+var sceneEl = document.querySelector('a-scene');
+var entityEl = document.createElement('a-box');
+entityEl.setAttribute()
+
+      // <a-box position="-1 4 -3" rotation="0 0 15" color="#4CC3D9" constraint="target: #target;" dynamic-body body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4"></a-box>
+
+
+// Do `.setAttribute()`s to initialize the entity.
+sceneEl.appendChild(entityEl);
