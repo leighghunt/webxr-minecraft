@@ -28,16 +28,24 @@ var world = {
 }
 
 for(var xIndex = -10; xIndex <= 10; ++xIndex){
-  world.blocks.push(
-    {
-      position: {
-        x: xIndex,
-        y:0.5,
-        z:-5
-      },
-      material: materialGrass
-    }
-  )
+
+  for(var yIndex = -10; yIndex <= 10; ++yIndex){
+
+    for(var zIndex = -10; zIndex <= 10; ++yIndex){
+
+
+      world.blocks.push(
+        {
+          position: {
+            x: xIndex,
+            y:yIndex,
+            z:-5
+          },
+          material: materialGrass
+        }
+      )
+      }
+  }
 }
 
 var sceneEl = document.querySelector('a-scene');
