@@ -21,6 +21,8 @@
 // }, 50)
 //0 1.25 -5
 
+const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
+
 var world = {
   blocks: []
 }
@@ -28,9 +30,12 @@ var world = {
 for(var xIndex = -10; xIndex <= 10; ++xIndex){
   world.blocks.push(
     {
-      x: xIndex,
-      y:1,
-      z:-5
+      position: {
+        x: xIndex,
+        y:0.5,
+        z:-5
+      },
+      material: materialGrass
     }
   )
 }
@@ -53,14 +58,12 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
   console.log(world.blocks[blockIndex])
 
   
-  entityEl.setAttribute('position', {
-    x: world.blocks[blockIndex].x, 
-    y: world.blocks[blockIndex].y, 
-    z: world.blocks[blockIndex].z
-  })
+  entityEl.setAttribute('position', world.blocks[blockIndex].position)
 
+//  entityEl.setAttribute('material', 'color', 'red');
 
-  entityEl.setAttribute('material', 'color', 'red');
+  entityEl.setAttribute('material', world.blocks[blockIndex].material);
+
 
 
   entityEl.setAttribute('dynamic-body', {
