@@ -48,6 +48,19 @@ for(var xIndex = -10; xIndex <= 10; ++xIndex){
   }
 }
 
+world.blocks.push(
+  {
+    position: {
+      x: 0,
+      y: 1,
+      z: -5
+    },
+    material: 'color: blue;'
+  }
+)
+
+
+
 var sceneEl = document.querySelector('a-scene');
 
 console.log(world.blocks.length)
