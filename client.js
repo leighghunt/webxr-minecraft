@@ -16,9 +16,9 @@ for(var xIndex = -10; xIndex <= 10; ++xIndex){
       world.blocks.push(
         {
           position: {
-            x: xIndex * 0.5,
-            y: yIndex * 0.1,
-            z: zIndex
+            x: xIndex * 0.9,
+            y: yIndex * 0.9,
+            z: zIndex * 0.9
           },
           material: materialGrass
         }
