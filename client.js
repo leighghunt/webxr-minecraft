@@ -83,6 +83,9 @@ AFRAME.registerComponent('thumbstick-logging',{
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
+    console.re.log('logThumbstick')
+
+
     if (evt.detail.y > 0.95) { console.log("DOWN"); }
     if (evt.detail.y < -0.95) { console.log("UP"); }
     if (evt.detail.x < -0.95) { console.log("LEFT"); }
@@ -101,3 +104,5 @@ AFRAME.registerComponent('trigger-logging',{
     if (evt.detail.x > 0.95) { console.log("RIGHT"); }
   }
 });
+
+ console.re.log('remote log test');
