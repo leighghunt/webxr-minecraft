@@ -6,19 +6,19 @@ var world = {
   blocks: []
 }
 
-for(var xIndex = -10; xIndex <= 10; ++xIndex){
+for(var xIndex = -3; xIndex <= 3; ++xIndex){
 
   for(var yIndex = -0.5; yIndex <= -0.5; ++yIndex){
 
-    for(var zIndex = -10; zIndex <= 10; ++zIndex){
+    for(var zIndex = -3; zIndex <= 3; ++zIndex){
 
 
       world.blocks.push(
         {
           position: {
-            x: xIndex * 0.9,
-            y: yIndex * 0.9,
-            z: zIndex * 0.9
+            x: xIndex,
+            y: yIndex,
+            z: zIndex
           },
           material: materialGrass
         }
