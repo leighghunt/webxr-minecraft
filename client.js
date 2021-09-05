@@ -20,7 +20,9 @@ for(var xIndex = -3; xIndex <= 3; ++xIndex){
             y: yIndex,
             z: zIndex
           },
-          material: materialGrass
+          material: 'color: green;'
+
+          // material: materialGrass
         }
       )
     }
@@ -83,8 +85,13 @@ AFRAME.registerComponent('thumbstick-logging',{
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    console.re.log('logThumbstick')
+    console.log('logThumbstick')
 
+    console.log('evt')
+    console.log(evt)
+
+    console.log('evt.detail')
+    console.log(evt.detail)
 
     if (evt.detail.y > 0.95) { console.log("DOWN"); }
     if (evt.detail.y < -0.95) { console.log("UP"); }
@@ -98,6 +105,14 @@ AFRAME.registerComponent('trigger-logging',{
     this.el.addEventListener('triggerchanged', this.logTrigger);
   },
   logTrigger: function (evt) {
+    console.log('logTrigger')
+
+    console.log('evt')
+    console.log(evt)
+
+    console.log('evt.detail')
+    console.log(evt.detail)
+
     if (evt.detail.y > 0.95) { console.log("DOWN"); }
     if (evt.detail.y < -0.95) { console.log("UP"); }
     if (evt.detail.x < -0.95) { console.log("LEFT"); }
@@ -105,4 +120,4 @@ AFRAME.registerComponent('trigger-logging',{
   }
 });
 
- console.re.log('remote log test');
+ console.log('remote log test 2');
