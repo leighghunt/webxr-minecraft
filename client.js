@@ -1,25 +1,4 @@
-// var sphere = document.getElementById('sphere');
-
-// var cylinder = document.getElementById('cylinder');
-
-// cylinder.body.angularVelocity.set(1, 1, 1)
-
-// console.log("el....")
-// console.log(el)
-
-// setInterval(function(){
-//   var positionSphere = sphere.getAttribute('position')
-//   positionSphere.y+=0.005
-//   sphere.setAttribute('position', positionSphere);
-  
-
-//   var positionCylinder = cylinder.getAttribute('position')
-//   positionCylinder.x-=0.001
-//   cylinder.setAttribute('position', positionCylinder);
-
-
-// }, 50)
-//0 1.25 -5
+/* global AFRAME */
 
 const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
 
@@ -37,8 +16,8 @@ for(var xIndex = -10; xIndex <= 10; ++xIndex){
       world.blocks.push(
         {
           position: {
-            x: xIndex,
-            y: yIndex,
+            x: xIndex * 0.5,
+            y: yIndex * 0.1,
             z: zIndex
           },
           material: materialGrass
@@ -63,7 +42,7 @@ world.blocks.push(
 
 var sceneEl = document.querySelector('a-scene');
 
-console.log(world.blocks.length)
+// console.log(world.blocks.length)
 
 for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
@@ -76,7 +55,7 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 //  console.log(world.blocks[blockIndex].x)
 
-  console.log(world.blocks[blockIndex])
+  // console.log(world.blocks[blockIndex])
 
   
   entityEl.setAttribute('position', world.blocks[blockIndex].position)
