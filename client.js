@@ -29,7 +29,7 @@ var world = {
 
 for(var xIndex = -10; xIndex <= 10; ++xIndex){
 
-  for(var yIndex = 0; yIndex <= 0; ++yIndex){
+  for(var yIndex = -0.5; yIndex <= -0.5; ++yIndex){
 
     for(var zIndex = -10; zIndex <= 10; ++zIndex){
 
