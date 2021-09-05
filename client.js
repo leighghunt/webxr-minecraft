@@ -99,6 +99,14 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 }
 
 
-      // <a-box position="-1 4 -3" rotation="0 0 15" color="#4CC3D9" constraint="target: #target;" dynamic-body body="type: static; shape: cone; addCollideEventListener: true; collisionFlags: 4"></a-box>
-
-
+AFRAME.registerComponent('thumbstick-logging',{
+  init: function () {
+    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+  },
+  logThumbstick: function (evt) {
+    if (evt.detail.y > 0.95) { console.log("DOWN"); }
+    if (evt.detail.y < -0.95) { console.log("UP"); }
+    if (evt.detail.x < -0.95) { console.log("LEFT"); }
+    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+  }
+});
