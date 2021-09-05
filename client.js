@@ -89,3 +89,15 @@ AFRAME.registerComponent('thumbstick-logging',{
     if (evt.detail.x > 0.95) { console.log("RIGHT"); }
   }
 });
+
+AFRAME.registerComponent('trigger-logging',{
+  init: function () {
+    this.el.addEventListener('triggerchanged', this.logTrigger);
+  },
+  logTrigger: function (evt) {
+    if (evt.detail.y > 0.95) { console.log("DOWN"); }
+    if (evt.detail.y < -0.95) { console.log("UP"); }
+    if (evt.detail.x < -0.95) { console.log("LEFT"); }
+    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+  }
+});
