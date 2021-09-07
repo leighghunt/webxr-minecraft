@@ -84,6 +84,8 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
+    console.log('setting up logThumbstick listener')
+
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
@@ -95,26 +97,7 @@ AFRAME.registerComponent('thumbstick-logging',{
     console.log('evt.detail')
     console.log(evt.detail)
 
-    if (evt.detail.y > 0.95) { console.log("DOWN"); }
-    if (evt.detail.y < -0.95) { console.log("UP"); }
-    if (evt.detail.x < -0.95) { console.log("LEFT"); }
-    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-  }
-});
-
-AFRAME.registerComponent('trigger-logging',{
-  init: function () {
-    this.el.addEventListener('triggerchanged', this.logTrigger);
-  },
-  logTrigger: function (evt) {
-    console.log('logTrigger')
-
-    console.log('evt')
-    console.log(evt)
-
-    console.log('evt.detail')
-    console.log(evt.detail)
-
+    
     if (evt.detail.y > 0.95) { 
       console.log("position")
       console.log(player.getAttribute("position"))
@@ -144,6 +127,23 @@ AFRAME.registerComponent('trigger-logging',{
     if (evt.detail.y < -0.95) { console.log("UP"); }
     if (evt.detail.x < -0.95) { console.log("LEFT"); }
     if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+    
+  }
+});
+
+AFRAME.registerComponent('trigger-logging',{
+  init: function () {
+    this.el.addEventListener('triggerchanged', this.logTrigger);
+  },
+  logTrigger: function (evt) {
+    console.log('logTrigger')
+
+    console.log('evt')
+    console.log(evt)
+
+    console.log('evt.detail')
+    console.log(evt.detail)
+
   }
 });
 
