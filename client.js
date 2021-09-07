@@ -1,12 +1,19 @@
 /* global AFRAME */
 
-const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
+// const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
+const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.8x8.png?v=1630989644528'
+
+
 
 var world = {
   blocks: []
 }
 
-for(var xIndex = -3; xIndex <= 3; ++xIndex){
+var worldWidth = 4
+var worldLength = 10
+var worldDepth = 1
+
+for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
 
   for(var yIndex = -0.5; yIndex <= -0.5; ++yIndex){
 
@@ -20,9 +27,9 @@ for(var xIndex = -3; xIndex <= 3; ++xIndex){
             y: yIndex,
             z: zIndex
           },
-          material: 'color: green;'
+          // material: 'color: green;'
 
-          // material: materialGrass
+          material: materialGrass
         }
       )
     }
