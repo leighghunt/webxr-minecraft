@@ -33,28 +33,18 @@ for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
           },
           // material: 'color: green;'
 
-          material: materialGrass
-        }
-      )
+          material: materialGrass}
+        )
     }
   }
 }
 
-world.blocks.push(
-  {
-    position: {
-      x: 0,
-      y: 1,
-      z: -5
-    },
-    material: 'color: blue;'
-  }
-)
+
 
 
 
 var sceneEl = document.querySelector('a-scene');
-var player = document.querySelector("a-entity.camera")
+var player = document.querySelector("a-entity[camera]")
 console.log(player)
 // console.log(world.blocks.length)
 
@@ -126,8 +116,13 @@ AFRAME.registerComponent('trigger-logging',{
     console.log(evt.detail)
 
     if (evt.detail.y > 0.95) { 
-      
+      console.log("position")
+      console.log(player.getAttribute("position"))
+
       var angle = player.getAttribute("rotation")
+      console.log("angle")
+      console.log(angle)
+
           // calculate the angles
           // the camera's theta == 0 is actually 90' in the clipspace
           let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
