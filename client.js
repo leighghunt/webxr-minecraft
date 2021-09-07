@@ -11,8 +11,8 @@ var world = {
   blocks: []
 }
 
-var worldWidth = 1
-var worldLength = 1
+var worldWidth = 3
+var worldLength = 3
 var worldDepth = 1
 
 for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
@@ -54,7 +54,8 @@ world.blocks.push(
 
 
 var sceneEl = document.querySelector('a-scene');
-
+var player = document.querySelector("a-entity.camera")
+console.log(player)
 // console.log(world.blocks.length)
 
 for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
@@ -124,7 +125,27 @@ AFRAME.registerComponent('trigger-logging',{
     console.log('evt.detail')
     console.log(evt.detail)
 
-    if (evt.detail.y > 0.95) { console.log("DOWN"); }
+    if (evt.detail.y > 0.95) { 
+      
+      var angle = player.getAttribute("rotation")
+          // calculate the angles
+          // the camera's theta == 0 is actually 90' in the clipspace
+          let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
+          let fi = angle.y * Math.PI / 180
+          let r = 0.1
+          // calculate the position shifts
+          let z = Math.sin(theta) * Math.cos(fi) * r
+          let x = Math.sin(theta) * Math.sin(fi) * r
+          let y = Math.cos(theta) * r
+
+          // update the position
+          var pos = player.getAttribute("position")
+          pos.x -= x;
+          pos.y -= y;
+          pos.z -= z;
+          player.setAttribute("position", pos);
+      
+      console.log("DOWN"); }
     if (evt.detail.y < -0.95) { console.log("UP"); }
     if (evt.detail.x < -0.95) { console.log("LEFT"); }
     if (evt.detail.x > 0.95) { console.log("RIGHT"); }
