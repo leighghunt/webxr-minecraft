@@ -81,8 +81,19 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 }
 
-
 AFRAME.registerComponent('thumbstick-logging',{
+  init: function () {
+    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+  },
+  logThumbstick: function (evt) {
+    if (evt.detail.y > 0.95) { log("DOWN"); }
+    if (evt.detail.y < -0.95) { log("UP"); }
+    if (evt.detail.x < -0.95) { log("LEFT"); }
+    if (evt.detail.x > 0.95) { log("RIGHT"); }
+  }
+});
+
+AFRAME.registerComponent('thumbstick-logging_',{
   init: function () {
 //    console.log('setting up logThumbstick listener')
 
@@ -100,15 +111,16 @@ AFRAME.registerComponent('thumbstick-logging',{
 
     //log('evt.detail')
     //log(evt.detail)
-
-    
-    if (evt.detail.y > 0.95) { 
       log("position")
       log(player.getAttribute("position"))
 
       var angle = player.getAttribute("rotation")
       log("angle")
       log(angle)
+
+
+    
+    if (evt.detail.y > 0.95) { 
 
           // calculate the angles
           // the camera's theta == 0 is actually 90' in the clipspace
