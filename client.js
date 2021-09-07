@@ -11,8 +11,8 @@ var world = {
   blocks: []
 }
 
-var worldWidth = 10
-var worldLength = 10
+var worldWidth = 1
+var worldLength = 1
 var worldDepth = 1
 
 for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
