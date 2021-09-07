@@ -81,19 +81,18 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 }
 
-AFRAME.registerComponent('thumbstick-logging',{
-  init: function () {
-    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-  },
-  logThumbstick: function (evt) {
-    if (evt.detail.y > 0.95) { log("DOWN"); }
-    if (evt.detail.y < -0.95) { log("UP"); }
-    if (evt.detail.x < -0.95) { log("LEFT"); }
-    if (evt.detail.x > 0.95) { log("RIGHT"); }
-  }
-});
 
-AFRAME.registerComponent('thumbstick-logging_',{
+
+log("position")
+log(player.getAttribute("position"))
+
+var angle = player.getAttribute("rotation")
+log("angle")
+log(angle)
+
+
+
+AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
 //    console.log('setting up logThumbstick listener')
 
@@ -147,30 +146,26 @@ AFRAME.registerComponent('thumbstick-logging_',{
   }
 });
 
-AFRAME.registerComponent('trigger-logging',{
-  init: function () {
-    this.el.addEventListener('triggerchanged', this.logTrigger);
-  },
-  logTrigger: function (evt) {
-    log('logTrigger')
 
-    log('evt')
-    log(evt)
+log('Loaded');
 
-    log('evt.detail')
-    log(evt.detail)
-
-  }
-});
-
-log('remote log test 2');
+var messages = []
 
 function log(message){
   console.log(message)
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/log", true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({
-      message: message
-  }));
+  messages.push(message)
 }
+
+setInterval(function(){
+  alert("Hello"); 
+}, 5000);
+
+// function log(message){
+//   console.log(message)
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("POST", "/log", true);
+//   xhr.setRequestHeader('Content-Type', 'application/json');
+//   xhr.send(JSON.stringify({
+//       message: message
+//   }));
+// }
