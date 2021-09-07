@@ -84,9 +84,9 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
-    console.log('setting up logThumbstick listener')
+//    console.log('setting up logThumbstick listener')
 
-    log('setting up logThumbstick listener')
+//   log('setting up logThumbstick listener')
 
 
 
@@ -95,11 +95,11 @@ AFRAME.registerComponent('thumbstick-logging',{
   logThumbstick: function (evt) {
     log('logThumbstick')
 
-    log('evt')
-    log(evt)
+    //log('evt')
+    //log(evt)
 
-    log('evt.detail')
-    log(evt.detail)
+    //log('evt.detail')
+    //log(evt.detail)
 
     
     if (evt.detail.y > 0.95) { 
@@ -154,6 +154,7 @@ AFRAME.registerComponent('trigger-logging',{
 log('remote log test 2');
 
 function log(message){
+  console.log(message)
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/log", true);
   xhr.setRequestHeader('Content-Type', 'application/json');
