@@ -1,7 +1,9 @@
 /* global AFRAME */
 
-// const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
-const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.8x8.png?v=1630989644528'
+const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.png?v=1630797451891'
+//const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.com/ca24c99b-0f67-450c-9e50-c2124065384c%2Fgrass.8x8.png?v=1630989644528'
+//const materialGrass = 'color: green;'
+
 
 
 
@@ -9,15 +11,17 @@ var world = {
   blocks: []
 }
 
-var worldWidth = 4
+var worldWidth = 10
 var worldLength = 10
 var worldDepth = 1
 
 for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
 
-  for(var yIndex = -0.5; yIndex <= -0.5; ++yIndex){
+  for(var yIndex = -(worldDepth-1) - 0.5; yIndex <= -0.5; ++yIndex){
 
-    for(var zIndex = -3; zIndex <= 3; ++zIndex){
+    // for(var zIndex = -(worldDepth-1)/2; zIndex <= (worldDepth-1)/2; ++zIndex){
+    for(var zIndex = -(worldLength-1)/2; zIndex <= (worldLength-1)/2; ++zIndex){
+
 
 
       world.blocks.push(
