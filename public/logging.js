@@ -21,22 +21,19 @@ AFRAME.registerComponent('thumbstick-logging',{
 
 
     
-      log("position")
-      log(player.getAttribute("position"))
+      // log("position")
+      // log(player.getAttribute("position"))
 
       var angle = player.getAttribute("rotation")
-      log("angle")
-      log(angle)
+      // log("angle")
+      // log(angle)
 
-
-    
-    if (evt.detail.y > 0.95) { 
 
           // calculate the angles
           // the camera's theta == 0 is actually 90' in the clipspace
           let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
           let fi = angle.y * Math.PI / 180
-          let r = 0.1
+          let r = 10
           // calculate the position shifts
           let z = Math.sin(theta) * Math.cos(fi) * r
           let x = Math.sin(theta) * Math.sin(fi) * r
@@ -44,16 +41,32 @@ AFRAME.registerComponent('thumbstick-logging',{
 
           // update the position
           var pos = player.getAttribute("position")
-          pos.x -= x;
-          pos.y -= y;
-          pos.z -= z;
-          player.setAttribute("position", pos);
+          var newPos = {x: pos.x,
+                       y: pos.y,
+                       z: pos.z}
+          log(pos)
+    log(x)
+
+    log(y)
+
+    log(z)
+
+          newPos.x -= x;
+          newPos.y -= y;
+          newPos.z -= z;
+          log("Moving")
+          log(newPos)
+          player.setAttribute("position", newPos);
+    
+    
+    if (evt.detail.y > 0.95) { 
+
       
           log("DOWN"); }
     
-    if (evt.detail.y < -0.95) { console.log("UP"); }
-    if (evt.detail.x < -0.95) { console.log("LEFT"); }
-    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+    if (evt.detail.y < -0.95) { log("UP"); }
+    if (evt.detail.x < -0.95) { log("LEFT"); }
+    if (evt.detail.x > 0.95) { log("RIGHT"); }
     
   }
 });
@@ -83,4 +96,4 @@ setInterval(function(){
     
   }
   
-}, 5000);
+}, 100);
