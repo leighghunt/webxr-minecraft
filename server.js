@@ -19,13 +19,24 @@ app.get('/', function(request, response) {
 
 
 app.use(express.static('public'));
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+)
+
+app.use(express.json())
 
 server.listen(process.env.PORT);
 
 
 
-app.post('/log', async (request, reply) => { 
+app.post('/log_', async (request, reply) => { 
   console.log(request.query)
+
+  console.log(request.body)
+
+  reply.status(200).send("OK")
 //  let params = request.query.raw ? {} : { seo: seo };
 
   // Flag to indicate we want to show the poll results instead of the poll form
@@ -33,3 +44,7 @@ app.post('/log', async (request, reply) => {
 //  let options;
 });
 
+app.post('/log', (req, res) => {
+  console.log(req.body.message)
+  res.status(200).send("OK")
+})

@@ -86,25 +86,29 @@ AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
     console.log('setting up logThumbstick listener')
 
+    log('setting up logThumbstick listener')
+
+
+
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
-    console.log('logThumbstick')
+    log('logThumbstick')
 
-    console.log('evt')
-    console.log(evt)
+    log('evt')
+    log(evt)
 
-    console.log('evt.detail')
-    console.log(evt.detail)
+    log('evt.detail')
+    log(evt.detail)
 
     
     if (evt.detail.y > 0.95) { 
-      console.log("position")
-      console.log(player.getAttribute("position"))
+      log("position")
+      log(player.getAttribute("position"))
 
       var angle = player.getAttribute("rotation")
-      console.log("angle")
-      console.log(angle)
+      log("angle")
+      log(angle)
 
           // calculate the angles
           // the camera's theta == 0 is actually 90' in the clipspace
