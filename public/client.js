@@ -6,54 +6,6 @@ const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.
 
 
 
-AFRAME.registerComponent('thumbstick-logging',{
-  init: function () {
-    log('setting up logThumbstick listener')
-    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-  },
-  logThumbstick: function (evt) {
-    log('logThumbstick')
-
-    //log('evt')
-    //log(evt)
-
-    //log('evt.detail')
-    //log(evt.detail)
-      log("position")
-      log(player.getAttribute("position"))
-
-      var angle = player.getAttribute("rotation")
-      log("angle")
-      log(angle)
-
-
-    
-    if (evt.detail.y > 0.95) { 
-
-          // calculate the angles
-          // the camera's theta == 0 is actually 90' in the clipspace
-          let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
-          let fi = angle.y * Math.PI / 180
-          let r = 0.1
-          // calculate the position shifts
-          let z = Math.sin(theta) * Math.cos(fi) * r
-          let x = Math.sin(theta) * Math.sin(fi) * r
-          let y = Math.cos(theta) * r
-
-          // update the position
-          var pos = player.getAttribute("position")
-          pos.x -= x;
-          pos.y -= y;
-          pos.z -= z;
-          player.setAttribute("position", pos);
-      
-      console.log("DOWN"); }
-    if (evt.detail.y < -0.95) { console.log("UP"); }
-    if (evt.detail.x < -0.95) { console.log("LEFT"); }
-    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-    
-  }
-});
 
 
 
@@ -140,8 +92,7 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 
 
-log('Loaded');
-
+log('Loaded client.js');
 
 function log(message){
   console.log(message)
@@ -167,23 +118,14 @@ setInterval(function(){
   
 }, 5000);
 
-// function log(message){
-//   console.log(message)
-//   var xhr = new XMLHttpRequest();
-//   xhr.open("POST", "/log", true);
-//   xhr.setRequestHeader('Content-Type', 'application/json');
-//   xhr.send(JSON.stringify({
-//       message: message
-//   }));
-// }
 
-setInterval(function(){
+// setInterval(function(){
 
-  log("Position update!")
-  log("position")
-  log(player.getAttribute("position"))
+//   log("Position update!")
+//   log("position")
+//   log(player.getAttribute("position"))
 
-  var angle = player.getAttribute("rotation")
-  log("angle")
-  log(angle)
-}, 10000)
+//   var angle = player.getAttribute("rotation")
+//   log("angle")
+//   log(angle)
+// }, 10000)
