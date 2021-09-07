@@ -6,6 +6,59 @@ const materialGrass = 'color: white; shader: flat; src: ' + 'https://cdn.glitch.
 
 
 
+AFRAME.registerComponent('thumbstick-logging',{
+  init: function () {
+    log('setting up logThumbstick listener')
+    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+  },
+  logThumbstick: function (evt) {
+    log('logThumbstick')
+
+    //log('evt')
+    //log(evt)
+
+    //log('evt.detail')
+    //log(evt.detail)
+      log("position")
+      log(player.getAttribute("position"))
+
+      var angle = player.getAttribute("rotation")
+      log("angle")
+      log(angle)
+
+
+    
+    if (evt.detail.y > 0.95) { 
+
+          // calculate the angles
+          // the camera's theta == 0 is actually 90' in the clipspace
+          let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
+          let fi = angle.y * Math.PI / 180
+          let r = 0.1
+          // calculate the position shifts
+          let z = Math.sin(theta) * Math.cos(fi) * r
+          let x = Math.sin(theta) * Math.sin(fi) * r
+          let y = Math.cos(theta) * r
+
+          // update the position
+          var pos = player.getAttribute("position")
+          pos.x -= x;
+          pos.y -= y;
+          pos.z -= z;
+          player.setAttribute("position", pos);
+      
+      console.log("DOWN"); }
+    if (evt.detail.y < -0.95) { console.log("UP"); }
+    if (evt.detail.x < -0.95) { console.log("LEFT"); }
+    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+    
+  }
+});
+
+
+
+var messages = [];
+
 
 var world = {
   blocks: []
@@ -83,73 +136,12 @@ for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){
 
 
 
-log("position")
-log(player.getAttribute("position"))
-
-var angle = player.getAttribute("rotation")
-log("angle")
-log(angle)
 
 
-
-AFRAME.registerComponent('thumbstick-logging',{
-  init: function () {
-//    console.log('setting up logThumbstick listener')
-
-//   log('setting up logThumbstick listener')
-
-
-
-    this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-  },
-  logThumbstick: function (evt) {
-    log('logThumbstick')
-
-    //log('evt')
-    //log(evt)
-
-    //log('evt.detail')
-    //log(evt.detail)
-      log("position")
-      log(player.getAttribute("position"))
-
-      var angle = player.getAttribute("rotation")
-      log("angle")
-      log(angle)
-
-
-    
-    if (evt.detail.y > 0.95) { 
-
-          // calculate the angles
-          // the camera's theta == 0 is actually 90' in the clipspace
-          let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
-          let fi = angle.y * Math.PI / 180
-          let r = 0.1
-          // calculate the position shifts
-          let z = Math.sin(theta) * Math.cos(fi) * r
-          let x = Math.sin(theta) * Math.sin(fi) * r
-          let y = Math.cos(theta) * r
-
-          // update the position
-          var pos = player.getAttribute("position")
-          pos.x -= x;
-          pos.y -= y;
-          pos.z -= z;
-          player.setAttribute("position", pos);
-      
-      console.log("DOWN"); }
-    if (evt.detail.y < -0.95) { console.log("UP"); }
-    if (evt.detail.x < -0.95) { console.log("LEFT"); }
-    if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-    
-  }
-});
 
 
 log('Loaded');
 
-var messages = []
 
 function log(message){
   console.log(message)
@@ -157,7 +149,22 @@ function log(message){
 }
 
 setInterval(function(){
-  alert("Hello"); 
+  console.log("timer")
+  
+  if(messages.length>0){
+    console.log(messages)
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/log", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        messages: messages
+    }));
+
+    messages = []
+    
+  }
+  
 }, 5000);
 
 // function log(message){
@@ -169,3 +176,14 @@ setInterval(function(){
 //       message: message
 //   }));
 // }
+
+setInterval(function(){
+
+  log("Position update!")
+  log("position")
+  log(player.getAttribute("position"))
+
+  var angle = player.getAttribute("rotation")
+  log("angle")
+  log(angle)
+}, 10000)

@@ -45,6 +45,6 @@ app.post('/log_', async (request, reply) => {
 });
 
 app.post('/log', (req, res) => {
-  console.log(req.body.message)
+  console.log(req.body.messages)
   res.status(200).send("OK")
 })
