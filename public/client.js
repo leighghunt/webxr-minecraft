@@ -136,15 +136,24 @@ AFRAME.registerComponent('trigger-logging',{
     this.el.addEventListener('triggerchanged', this.logTrigger);
   },
   logTrigger: function (evt) {
-    console.log('logTrigger')
+    log('logTrigger')
 
-    console.log('evt')
-    console.log(evt)
+    log('evt')
+    log(evt)
 
-    console.log('evt.detail')
-    console.log(evt.detail)
+    log('evt.detail')
+    log(evt.detail)
 
   }
 });
 
- console.log('remote log test 2');
+log('remote log test 2');
+
+function log(message){
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/log", true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({
+      message: message
+  }));
+}
