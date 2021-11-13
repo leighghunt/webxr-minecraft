@@ -44,11 +44,15 @@ AFRAME.registerComponent('thumbstick-logging',{
     let r = .1
     // calculate the position shifts
 
+    log('angle.y')
+    log(angle.y)
+    log('Math.cos(fi)')
+    log(Math.cos(fi))
     let z = Math.sin(theta) * Math.cos(fi) * r * evt.detail.y
     let x = Math.sin(theta) * Math.sin(fi) * r * evt.detail.y
     
-    z += Math.sin(theta) * Math.cos(fi - Math.PI) * r * evt.detail.x
-    x += Math.sin(theta) * Math.sin(fi - Math.PI) * r * evt.detail.x
+    z += Math.sin(theta) * Math.sin(fi) * -1 * r * evt.detail.x
+    x += Math.sin(theta) * Math.cos(fi) * -1 * r * evt.detail.x
     
     // Don't do Y. That's too funky!
     // let y = Math.cos(theta) * r * evt.detail.y
