@@ -50,7 +50,8 @@ for(var xIndex = -(worldWidth-1)/2; xIndex <= (worldWidth-1)/2; ++xIndex){
 
 var sceneEl = document.querySelector('a-scene');
 var player = document.querySelector("a-entity[camera]")
-console.log(player)
+// console.log(player)
+// alert(player)
 // console.log(world.blocks.length)
 
 for(var blockIndex = 0; blockIndex < world.blocks.length; ++blockIndex){

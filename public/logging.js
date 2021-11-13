@@ -2,14 +2,17 @@
 
 var messages = [];
 
+// alert("Hello from logging.js")
 
 AFRAME.registerComponent('thumbstick-logging',{
   init: function () {
     log('setting up logThumbstick listener')
+    // alert('setting up logThumbstick listener')
     this.el.addEventListener('thumbstickmoved', this.logThumbstick);
   },
   logThumbstick: function (evt) {
     log('logThumbstick')
+  alert('logThumbstick')
 
     //log('evt')
     //log(evt)
@@ -44,19 +47,28 @@ AFRAME.registerComponent('thumbstick-logging',{
           var newPos = {x: pos.x,
                        y: pos.y,
                        z: pos.z}
-          log(pos)
-    log(x)
+//           log(pos)
+//     log(x)
 
-    log(y)
+//     log(y)
 
-    log(z)
+//     log(z)
 
-          newPos.x -= x;
-          newPos.y -= y;
-          newPos.z -= z;
-          log("Moving")
-          log(newPos)
-          player.setAttribute("position", newPos);
+          player.object3D.position.x -= x;
+          player.object3D.position.y -= y;
+          player.object3D.position.z -= z;
+    
+    // alert(newPos);
+
+          // newPos.x -= x;
+          // newPos.y -= y;
+          // newPos.z -= z;
+    
+          // player.object3D.position.set(newPos.x, newPos.y, newPos.z);
+    
+          // log("Moving")
+          // log(newPos)
+          // player.setAttribute('position', newPos);
     
     
     if (evt.detail.y > 0.95) { 
