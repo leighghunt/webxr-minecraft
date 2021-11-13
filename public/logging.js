@@ -23,28 +23,34 @@ AFRAME.registerComponent('thumbstick-logging',{
     
     // var player = document.querySelector("a-entity[camera]")
     var player = document.querySelector("#cameraWrapper")
+    var camera = document.querySelector("a-entity[camera]")
 
     
 //       // log("position")
 //       // log(player.getAttribute("position"))
 
-      var angle = player.getAttribute("rotation")
-      log("angle")
-      log(angle)
+    var angle = camera.getAttribute("rotation")
+    log("angle")
+    log(angle)
       
 //       // alert(evt.detail.y)
 //       // alert(angle)
 
 
-          // calculate the angles
-          // the camera's theta == 0 is actually 90' in the clipspace
-          let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
-          let fi = angle.y * Math.PI / 180
-          let r = 10
-          // calculate the position shifts
-          let z = Math.sin(theta) * Math.cos(fi) * r
-          let x = Math.sin(theta) * Math.sin(fi) * r
-          let y = Math.cos(theta) * r
+    // calculate the angles
+    // the camera's theta == 0 is actually 90' in the clipspace
+    let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
+    let fi = angle.y * Math.PI / 180
+    let r = 0.1
+    // calculate the position shifts
+    let z = Math.sin(theta) * Math.cos(fi) * r //* evt.detail.z
+    let x = Math.sin(theta) * Math.sin(fi) * r //* evt.detail.x
+    let y = Math.cos(theta) * r //* evt.detail.y
+
+    player.object3D.position.x += x
+    player.object3D.position.y += y
+    player.object3D.position.z += z
+
 
 //           // update the position
 //           var pos = player.getAttribute("position")
@@ -57,31 +63,31 @@ AFRAME.registerComponent('thumbstick-logging',{
 //           player.object3D.position.z -= z;
     
     
-        player.object3D.position.z += evt.detail.y/10.0
-        player.object3D.position.x += evt.detail.x/10.0
+    // player.object3D.position.z += evt.detail.y/10.0
+    // player.object3D.position.x += evt.detail.x/10.0
+
+//     if (evt.detail.y > 0.95) {   
+//         // player.object3D.position.y += evt.detail.y
+//         log("DOWN"); }
     
-    if (evt.detail.y > 0.95) {   
-        // player.object3D.position.y += evt.detail.y
-        log("DOWN"); }
-    
-    if (evt.detail.y < -0.95) { 
-        // player.object3D.position.y += evt.detail.y
-      log("UP"); 
-    }
-    if (evt.detail.x < -0.95) { 
-        // player.object3D.position.x += evt.detail.x
-      log("LEFT"); 
-    }
-    if (evt.detail.x > 0.95) { 
-      // log('player.object3D.position.x')
-      // log(player.object3D.position.x)
-      // log('player.getAttribute("position").x')
-      // log(player.getAttribute("position").x)
-      // player.object3D.position.x += evt.detail.x
-      // log(player.object3D.position.x)
-      // log(player.getAttribute("position").x)
-      log("RIGHT"); 
-    }
+//     if (evt.detail.y < -0.95) { 
+//         // player.object3D.position.y += evt.detail.y
+//       log("UP"); 
+//     }
+//     if (evt.detail.x < -0.95) { 
+//         // player.object3D.position.x += evt.detail.x
+//       log("LEFT"); 
+//     }
+//     if (evt.detail.x > 0.95) { 
+//       // log('player.object3D.position.x')
+//       // log(player.object3D.position.x)
+//       // log('player.getAttribute("position").x')
+//       // log(player.getAttribute("position").x)
+//       // player.object3D.position.x += evt.detail.x
+//       // log(player.object3D.position.x)
+//       // log(player.getAttribute("position").x)
+//       log("RIGHT"); 
+//     }
     
   }
 });
