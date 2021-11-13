@@ -47,8 +47,8 @@ AFRAME.registerComponent('thumbstick-logging',{
     let z = Math.sin(theta) * Math.cos(fi) * r * evt.detail.y
     let x = Math.sin(theta) * Math.sin(fi) * r * evt.detail.y
     
-    z += Math.sin(theta) * Math.cos(fi) * r * evt.detail.x
-    x += Math.sin(theta) * Math.sin(fi) * r * evt.detail.x
+    z += Math.sin(theta) * Math.cos(fi - Math.PI) * r * evt.detail.x
+    x += Math.sin(theta) * Math.sin(fi - Math.PI) * r * evt.detail.x
     
     // Don't do Y. That's too funky!
     // let y = Math.cos(theta) * r * evt.detail.y
