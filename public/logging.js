@@ -41,14 +41,20 @@ AFRAME.registerComponent('thumbstick-logging',{
     // the camera's theta == 0 is actually 90' in the clipspace
     let theta = (angle.x * Math.PI / 180) + Math.PI / 2 
     let fi = angle.y * Math.PI / 180
-    let r = 0.1
+    let r = .1
     // calculate the position shifts
-    let z = Math.sin(theta) * Math.cos(fi) * r //* evt.detail.z
-    let x = Math.sin(theta) * Math.sin(fi) * r //* evt.detail.x
-    let y = Math.cos(theta) * r //* evt.detail.y
+
+    let z = Math.sin(theta) * Math.cos(fi) * r * evt.detail.y
+    let x = Math.sin(theta) * Math.sin(fi) * r * evt.detail.y
+    
+    z += Math.sin(theta) * Math.cos(fi) * r * evt.detail.x
+    x += Math.sin(theta) * Math.sin(fi) * r * evt.detail.x
+    
+    // Don't do Y. That's too funky!
+    // let y = Math.cos(theta) * r * evt.detail.y
 
     player.object3D.position.x += x
-    player.object3D.position.y += y
+    // player.object3D.position.y += y
     player.object3D.position.z += z
 
 
